@@ -16,14 +16,19 @@ public class PlayerController : MonoBehaviour
     private float verticalInput; //gets a value [-1,1] from user key press up/down
     private float horizontalInput; //gets a value [-1,1] from user key press left/right
     private Rigidbody rb; //points to vehicle rigidbody component
+    private float upDownSpeed; // Speed for moving up and down
+
 
 
     // Initialized speed, turnspeed, and rb before the first frame update
     void Start()
     {
-        speed = 1000.0f;
-        turnSpeed = 30.0f;
+        speed = 1200.0f;
+        turnSpeed = 100.0f;
         rb = GetComponent<Rigidbody>();
+        upDownSpeed = 500.0f;
+
+        
 
     }
 
@@ -32,6 +37,15 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddRelativeForce(Vector3.forward * speed * verticalInput);
         transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
+        //Scorekeeper.Instance.AddToScore(verticalInput);
+
+        // Get input for moving up and down
+        //float upDownInput = Input.GetAxis("VerticalUpDown");
+        // Calculate up and down movement
+        //float upDownForce = upDownInput * upDownSpeed * Time.deltaTime;
+        //rb.AddRelativeForce(Vector3.up * upDownForce);
+        
+
 
     }
 
@@ -40,6 +54,15 @@ public class PlayerController : MonoBehaviour
         verticalInput = inputValue.Get<Vector2>().y;
         horizontalInput = inputValue.Get<Vector2>().x;
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Energy"))
+        {
+            Scorekeeper.Instance.SubtractFromScore();
+            Destroy(collision.gameObject);
+        }
     }
 
 

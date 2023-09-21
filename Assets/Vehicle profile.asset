@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   focusDistance:
     overrideState: 1
-    value: 5
+    value: 7
   aperture:
     overrideState: 1
     value: 5.6
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -49,13 +49,13 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0, g: 0.2459197, b: 0.8490566, a: 1}
+    value: {r: 0, g: 0, b: 0, a: 1}
   center:
     overrideState: 1
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.55
+    value: 0.41
   smoothness:
     overrideState: 1
     value: 1
@@ -84,13 +84,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 25
+    value: 35
   threshold:
     overrideState: 1
     value: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 0
+    value: 100
   mixerRedOutRedIn:
     overrideState: 1
     value: 100
@@ -245,13 +245,13 @@ MonoBehaviour:
     value: 200
   lift:
     overrideState: 1
-    value: {x: 0.1303584, y: 0.7904631, z: 1, w: 0}
+    value: {x: 0, y: 0.7284322, z: 1, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 0, y: 0.50531816, z: 1, w: 0}
+    value: {x: 1, y: 0.8873688, z: 0.9732753, w: 0}
   gain:
     overrideState: 1
-    value: {x: 0.50287986, y: 1, z: 0.6944478, w: 0}
+    value: {x: 1, y: 0.5746585, z: 0.5410359, w: 0}
   masterCurve:
     overrideState: 1
     value:
@@ -1464,13 +1464,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 63
+    value: 6
   intensityX:
     overrideState: 1
     value: 1
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1

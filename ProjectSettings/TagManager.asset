@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Energy
+  - Aluminum
+  - Magnesium
+  - Hydrogen
+  - Oxygen
+  - Water
   layers:
   - Default
   - TransparentFX
