@@ -5,11 +5,15 @@ public class Resources : MonoBehaviour
 {
     public TextMeshProUGUI resourceText;
 
+    public GameObject gameOverCanvas; // Reference to the canvas displaying game over messages.
+
     private int aluminumCount = 0;
     private int magnesiumCount = 0;
     private int hydrogenCount = 0;
     private int oxygenCount = 0;
     private int waterCount = 0;
+
+    private bool gameEnded = false;
 
     private void Start()
     {
@@ -62,6 +66,36 @@ public class Resources : MonoBehaviour
             resourceList += "Water: " + waterCount + "\n";
 
             resourceText.text = resourceList;
+        }
+    }
+
+    public void CheckGameEnd()
+    {
+        if (!gameEnded)
+        {
+            if (aluminumCount > 0 && magnesiumCount > 0 && hydrogenCount > 0 && oxygenCount > 0 && waterCount > 0)
+            {
+                // Player won
+                gameOverCanvas.SetActive(true); // Display the game over canvas
+                gameOverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You Won!";
+                gameEnded = true;
+            }
+            else
+            {
+                // Player lost
+                gameOverCanvas.SetActive(true); // Display the game over canvas
+                gameOverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You Lost";
+                gameEnded = true;
+            }
+        }
+    }
+
+    // Add this method to handle collisions with the "GameEnd" trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GameEnd"))
+        {
+            CheckGameEnd();
         }
     }
 }

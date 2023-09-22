@@ -5,19 +5,23 @@ using TMPro;
 
 public class Scorekeeper : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreboardText;  // Reference to the Scoreboard TextMeshProUGUI GameObject
+    [SerializeField] private TextMeshProUGUI scoreboardText; // Reference to the Scoreboard TextMeshProUGUI GameObject
 
-    
+    public GameObject gameOverCanvas;
     private float energyLevel;                                      // Player's current score
     private int penalty = 20;                                 // Penalty for running into an obstacle
 
     public static Scorekeeper Instance;                       // This script has a public static reference to itself so that other scripts can access it from anywhere without needing to find a reference to it
 
+   
+    private bool isGameOver = false; // Flag to track if the game is over
+
     void Start()
     {
-        energyLevel = 100.0f;
+        energyLevel = 10.0f;
         // Start a repeating timer to decrease energy every 5 seconds
         InvokeRepeating("DecreaseEnergyPeriodically", 5f, 5f);
+        CheckGameEnd();
         
     }
 
@@ -75,6 +79,8 @@ public class Scorekeeper : MonoBehaviour
     {
         energyLevel -= 25;
         DisplayScore();
+
+        CheckGameEnd();
         
     }
 
@@ -95,13 +101,43 @@ public class Scorekeeper : MonoBehaviour
         }
 
         DisplayScore();
+
+        CheckGameEnd();
     }
 
-    void GameEnd()
-    {
-        //GameOver.EndGame();
+    
 
-       DisplayScore();
+    private void CheckGameEnd()
+    {
+        if (!isGameOver && energyLevel <= 0)
+        {
+            isGameOver = true;
+            // You can add game over logic here, such as displaying a game over screen or performing other actions.
+            Debug.Log("Game Over");
+
+            // Call a method to handle the game over screen
+            HandleGameOver();
+        }
+    }
+
+    // Method to handle the game over screen
+    private void HandleGameOver()
+    {
+      
+
+        // Stop player movement (you need to replace "PlayerController" with the actual name of your player movement script)
+        PlayerController playerController = GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.StopMovement(); // Implement this method in your player movement script to stop movement.
+        }
+
+        // Display "You Lost" on a canvas (you need to replace "gameOverCanvas" with the actual name of your canvas GameObject)
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+            gameOverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You Lost";
+        }
     }
 
 }
