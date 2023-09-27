@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Initialized speed, turnspeed, and rb before the first frame update
     void Start()
     {
-        speed = 2000.0f;
+        speed = 2200.0f;
         turnSpeed = 100.0f;
         rb = GetComponent<Rigidbody>();
         upDownSpeed = 500.0f;

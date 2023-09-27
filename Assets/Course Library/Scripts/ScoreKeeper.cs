@@ -18,7 +18,7 @@ public class Scorekeeper : MonoBehaviour
 
     void Start()
     {
-        energyLevel = 10.0f;
+        energyLevel = 100.0f;
         // Start a repeating timer to decrease energy every 5 seconds
         InvokeRepeating("DecreaseEnergyPeriodically", 5f, 5f);
         CheckGameEnd();
@@ -77,7 +77,7 @@ public class Scorekeeper : MonoBehaviour
     // Method to decrease energy periodically
     private void DecreaseEnergyPeriodically()
     {
-        energyLevel -= 25;
+        energyLevel -= 15;
         DisplayScore();
 
         CheckGameEnd();
