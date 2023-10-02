@@ -13,6 +13,7 @@ public class Scorekeeper : MonoBehaviour
 
     public static Scorekeeper Instance;                       // This script has a public static reference to itself so that other scripts can access it from anywhere without needing to find a reference to it
 
+    
    
     private bool isGameOver = false; // Flag to track if the game is over
 
@@ -22,6 +23,7 @@ public class Scorekeeper : MonoBehaviour
         // Start a repeating timer to decrease energy every 5 seconds
         InvokeRepeating("DecreaseEnergyPeriodically", 5f, 5f);
         CheckGameEnd();
+        
         
     }
 
@@ -105,7 +107,7 @@ public class Scorekeeper : MonoBehaviour
         CheckGameEnd();
     }
 
-    
+   
 
     private void CheckGameEnd()
     {
@@ -139,5 +141,7 @@ public class Scorekeeper : MonoBehaviour
             gameOverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You Lost";
         }
     }
+
+    
 
 }

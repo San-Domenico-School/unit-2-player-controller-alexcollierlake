@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb; //points to vehicle rigidbody component
     private float upDownSpeed; // Speed for moving up and down
 
-
+    private AudioSource audioSource;
 
     // Initialized speed, turnspeed, and rb before the first frame update
     void Start()
@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
         turnSpeed = 100.0f;
         rb = GetComponent<Rigidbody>();
         upDownSpeed = 500.0f;
+        audioSource = GetComponent<AudioSource>();
 
-        
 
     }
 
@@ -74,10 +74,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Energy"))
         {
+            audioSource.Play();
             Scorekeeper.Instance.SubtractFromScore();
             Destroy(collision.gameObject);
+
         }
     }
+
+    
 
 
 }
